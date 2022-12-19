@@ -27,10 +27,10 @@ pesan Mengunggah ROM...
 cd $WORKDIR/rom/$nama_rom
 
 nama_file=$(basename out/target/product/$perangkat/DerpFest-13-*.zip)
-tautan=https://buildbot.cloudmobx.workers.dev/0:/$nama_rom/$perangkat/$nama_file
-maintainer=https://t.me/mobxprjkt
+tautan=https://declan.cloudmobx.workers.dev/0:/$nama_rom/$perangkat/$nama_file
+maintainer=https://t.me/seklek
 
-rclone copy out/target/product/$(grep unch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1)/DerpFest-13-*.zip rom:$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)/$(grep unch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1) -P
+rclone copy out/target/product/$(grep unch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1)/DerpFest-13-*.zip seklek:$(grep init $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d / -f 4)/$(grep unch $CIRRUS_WORKING_DIR/build.sh -m 1 | cut -d ' ' -f 2 | cut -d _ -f 2 | cut -d - -f 1) -P
 
 cd $WORKDIR/rom/$nama_rom/out/target/product/$perangkat
 
@@ -49,7 +49,7 @@ echo -e \
 <b>📕 MD5 :</b> <code>"$(md5sum *zip | cut -d' ' -f1)"</code>
 <b>📘 SHA1 :</b> <code>"$(sha1sum *zip | cut -d' ' -f1)"</code>
 <b>==============================</b>
-<b>🌀 Maintainer : <a href=\"${maintainer}\">Yovie</a></b>
+<b>🌀 Maintainer : <a href=\"${maintainer}\">Declanヅ</a></b>
 " > tg.html
 TG_TEXT=$(< tg.html)
 pesan_telegram "$TG_TEXT"
@@ -68,7 +68,7 @@ function upload_ccache() {
         tar --use-compress-program="pigz -k -$2 " -cf $1.tar.gz $1
     }
     time compress ccache 1
-    rclone copy --drive-chunk-size 256M --stats 1s ccache.tar.gz rom:ccache/$perangkat/$nama_rom -P
+    rclone copy --drive-chunk-size 256M --stats 1s ccache.tar.gz seklek:ccache/$perangkat/$nama_rom -P
     rm -rf ccache.tar.gz
     pesan Mengunggah ccache berhasil...
 }
