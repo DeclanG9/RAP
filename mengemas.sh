@@ -84,7 +84,7 @@ if [[ $sukses == *'#### build completed successfully'* ]]; then
     upload_ccache
 else
     pesan Build sudah selesai, Unggah ccache saja ❌
-    pesan Upload ccache..
+    pesan Upload ccache...
     upload_ccache
 fi
 }
