@@ -1,6 +1,6 @@
 #sync rom
 repo init --depth=1 --no-repo-verify -u https://github.com/Evolution-X/manifest.git -b tiramisu -g default,-mips,-darwin,-notdefault
-git clone --depth 1 https://github.com/DeclanG9/local_manifest -b main .repo/local_manifests
+git clone --depth 1 https://github.com/DeclanG9/local_manifest -b evox .repo/local_manifests
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j8
 
 # build rom
